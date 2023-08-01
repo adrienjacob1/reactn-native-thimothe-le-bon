@@ -14,12 +14,19 @@ const Popularjobs = () => {
 
   const { data, isLoading, error } = useFetch('search', { query: 'react native developer in Paris, FR', num_pages: '1'});
 
+  const [selectedJob, setSelectedJob] = useState([]);
+
+  function handleCardPress(item) {
+    setSelectedJob(item.job_id);
+    router.push(`/job-details/${item.job_id}`);
+  }
+
   return (
     <View style={styles.container}>
 
       <View style={styles.header}>
 
-        <Text style={styles.headerTitle}>Popularjobs</Text>
+        <Text style={styles.headerTitle}>Popular jobs</Text>
 
         <TouchableOpacity>
           <Text style={styles.headerBtn}>Show all</Text>
@@ -35,7 +42,7 @@ const Popularjobs = () => {
               horizontal
               data={data}
               keyExtractor={item => item?.job_id }
-              renderItem={ ( { item } ) => ( <PopularJobCard item={ item } /> ) }
+              renderItem={ ( { item } ) => ( <PopularJobCard item={ item } selectedJob={selectedJob} handleCardPress={handleCardPress} /> ) }
               contentContainerStyle={ { columnGap: SIZES.medium } }
             />
           )
