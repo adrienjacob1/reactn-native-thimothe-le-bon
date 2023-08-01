@@ -6,9 +6,30 @@ import { images, icons, COLORS, SIZES } from '../constants';
 
 import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components';
 
-
-
-
 export default function Home() {
-
+    const router = useRouter();
+    return (
+        <SafeAreaView style={ { flex: 1, backgroundColor: COLORS.lightWhite } } > // une accolade car on attend du JS et une autre pour l'objet JS
+            <Stack.Screen
+                options={ { 
+                    headerStyle: { backgroundColor: COLORS.lightWhite },
+                    headerShadowVisible: false,
+                    headerLeft: () => (
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />  //iconUrl est une propriété non native qu'on a définit nous meme
+                    ),
+                    headerRight: () => (
+                        <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
+                    ),
+                    headerTitle: ''
+                 } }
+            />
+            <ScrollView showsVerticalScrollIndicator={false} >
+                <View style={ { flex: 1, padding: SIZES.medium } } >
+                    <Welcome />
+                    <Popularjobs />
+                    <Nearbyjobs />
+                </View>
+            </ScrollView>
+        </SafeAreaView>
+    );
 }
