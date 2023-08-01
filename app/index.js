@@ -9,13 +9,13 @@ import { Nearbyjobs, Popularjobs, ScreenHeaderBtn, Welcome } from '../components
 export default function Home() {
     const router = useRouter();
     return (
-        <SafeAreaView style={ { flex: 1, backgroundColor: COLORS.lightWhite } } > // une accolade car on attend du JS et une autre pour l'objet JS
+        <SafeAreaView style={ { flex: 1, backgroundColor: COLORS.lightWhite } } >
             <Stack.Screen
                 options={ { 
                     headerStyle: { backgroundColor: COLORS.lightWhite },
                     headerShadowVisible: false,
                     headerLeft: () => (
-                        <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />  //iconUrl est une propriété non native qu'on a définit nous meme
+                        <ScreenHeaderBtn iconUrl={icons.menu} dimension="60%" />
                     ),
                     headerRight: () => (
                         <ScreenHeaderBtn iconUrl={images.profile} dimension="100%" />
