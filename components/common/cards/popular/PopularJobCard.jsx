@@ -1,7 +1,8 @@
 import React from 'react';
+
 import { View, Text, TouchableOpacity, Image } from 'react-native';
 
-import styles from './popularjobcard.style';
+import styles from './popularjobcard.style.js';
 import checkImageUrl from '../../../../utils';
 
 const PopularJobCard = ( { item, selectedJob, handleCardPress } ) => {

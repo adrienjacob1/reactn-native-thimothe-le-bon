@@ -1,4 +1,4 @@
-export default function chackImageUrl(url) {
+export default function checkImageUrl(url) {
     if (!url) {
         return false;
     } else {
