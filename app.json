@@ -1,0 +1,10 @@
+{
+  "expo": {
+    "scheme": "acme",
+    "web": {
+      "bundler": "metro"
+    },
+    "name": "React-Native-le-bon",
+    "slug": "React-Native-le-bon"
+  }
+}
