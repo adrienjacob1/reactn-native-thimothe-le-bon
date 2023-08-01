@@ -1,14 +1,49 @@
-import React from 'react'
-import { View, Text } from 'react-native'
+import React, { useState } from 'react';
+import { View, Text, TouchableOpacity, FlatList, ActivityIndicator } from 'react-native';
 
-import styles from './popularjobs.style'
+import { useRouter } from 'expo-router';
+
+import PopularJobCard from '../../common/cards/popular/PopularJobCard';
+import useFetch from '../../../hook/useFetch';
+
+import styles from './popularjobs.style';
+import { COLORS, SIZES } from '../../../constants';
 
 const Popularjobs = () => {
+  const router = useRouter();
+
+  const { data, isLoading, error } = useFetch('search', { query: 'react native developer in Paris, FR', num_pages: '1'});
+
   return (
-    <View>
-      <Text>Popularjobs</Text>
+    <View style={styles.container}>
+
+      <View style={styles.header}>
+
+        <Text style={styles.headerTitle}>Popularjobs</Text>
+
+        <TouchableOpacity>
+          <Text style={styles.headerBtn}>Show all</Text>
+        </TouchableOpacity>
+      </View>
+
+      <View style={styles.cardsContainer}>
+        { /* JS expression */
+          isLoading ? ( <ActivityIndicator size='large' colors={COLORS.primary} />  ) : 
+          error ? ( <Text> Something went wrong </Text> ) : 
+          (
+            <FlatList 
+              horizontal
+              data={data}
+              keyExtractor={item => item?.job_id }
+              renderItem={ ( { item } ) => ( <PopularJobCard item={ item } /> ) }
+              contentContainerStyle={ { columnGap: SIZES.medium } }
+            />
+          )
+        }
+      </View>
+
     </View>
-  )
+  );
 }
 
 export default Popularjobs
