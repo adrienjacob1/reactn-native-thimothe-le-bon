@@ -27,7 +27,7 @@ export default function Home() {
                 <View style={ { flex: 1, padding: SIZES.medium } } >
                     <Welcome />
                     {/*<Popularjobs />*/}
-                    <Nearbyjobs />
+                    {/*Nearbyjobs />*/}
                 </View>
             </ScrollView>
         </SafeAreaView>
